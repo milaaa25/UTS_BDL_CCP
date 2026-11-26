@@ -1,0 +1,10 @@
+Stage untuk kueri (ii) (bandingkan dengan tab Stages / SQL di Spark UI):
+  stage 240 [COMPLETE] task=  8 shuffleWrite=    27.8 KB shuffleRead=     0.0 KB | collect at C:\Users\ahmad\AppData\Local\Temp\ipykernel_10940
+  stage 241 [SKIPPED ] task=  8 shuffleWrite=     0.0 KB shuffleRead=     0.0 KB | collect at C:\Users\ahmad\AppData\Local\Temp\ipykernel_10940
+  stage 242 [COMPLETE] task=  1 shuffleWrite=     0.0 KB shuffleRead=    27.8 KB | collect at C:\Users\ahmad\AppData\Local\Temp\ipykernel_10940
+  stage 243 [SKIPPED ] task=  8 shuffleWrite=     0.0 KB shuffleRead=     0.0 KB | collect at C:\Users\ahmad\AppData\Local\Temp\ipykernel_10940
+  stage 244 [COMPLETE] task=  1 shuffleWrite=     8.1 KB shuffleRead=    27.8 KB | collect at C:\Users\ahmad\AppData\Local\Temp\ipykernel_10940
+  stage 245 [SKIPPED ] task=  8 shuffleWrite=     0.0 KB shuffleRead=     0.0 KB | collect at C:\Users\ahmad\AppData\Local\Temp\ipykernel_10940
+  stage 246 [SKIPPED ] task=  1 shuffleWrite=     0.0 KB shuffleRead=     0.0 KB | collect at C:\Users\ahmad\AppData\Local\Temp\ipykernel_10940
+  stage 247 [COMPLETE] task=  1 shuffleWrite=     0.0 KB shuffleRead=     8.1 KB | collect at C:\Users\ahmad\AppData\Local\Temp\ipykernel_10940
+Stage pertama: scan + Filter + HashAggregate(partial) per partisi lalu shuffle write (Exchange hashpartitioning(wiki)). Exchange adalah batas stage; stage berikutnya membaca shuffle dan menjalankan HashAggregate(final). Exchange kedua (rangepartitioning) muncul karena ORDER BY butuh pengurutan global, diikuti Sort. Stage SKIPPED = shuffle yang sama dipakai ulang oleh job AQE berikutnya; AQE juga menggabung partisi shuffle kecil (task lebih sedikit).

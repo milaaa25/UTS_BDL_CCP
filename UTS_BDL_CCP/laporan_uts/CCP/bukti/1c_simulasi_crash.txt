@@ -1,0 +1,12 @@
+Setelah simulasi crash (diproses tetapi belum di-commit -> diulang setelah lanjut):
+ partisi rentang_uji  pesan_seharusnya  diproses_total  hilang  ganda
+       0   [0, 4310)              4310            4353       0     43
+       1   [0, 4380)              4380            4442       0     62
+       2   [0, 3882)              3882            3932       0     50
+       3   [0, 3895)              3895            3954       0     59
+       4   [0, 4454)              4454            4531       0     77
+       5   [0, 4565)              4565            4610       0     45
+       6   [0, 5700)              5700            5766       0     66
+       7   [0, 5688)              5688            5747       0     59
+
+TOTAL ganda = 461, hilang = 0. Dengan kunci wiki+id: 37,335 pemrosesan -> 36,874 event unik. Duplikat tidak mengubah hasil (idempoten).

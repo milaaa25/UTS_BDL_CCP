@@ -1,0 +1,5 @@
+Stream mulai melihat data pada jendela 2026-11-24 20:24:00; 7,141 baris jendela sebelum itu dikecualikan (di luar jangkauan stream).
+Jendela yang dibandingkan (jendela_mulai > 2026-11-24 20:24:00 dan jendela_akhir <= watermark 2026-11-24 13:29:59+00:00): 251
+Total edit di jendela itu - streaming: 3,614 | batch ulang: 3,614
+Jendela berbeda: 0 | baris dibuang watermark (sejak restart): 0
+Kesimpulan: tidak ada hitungan ganda maupun data terlewat pada jendela yang diamati stream.

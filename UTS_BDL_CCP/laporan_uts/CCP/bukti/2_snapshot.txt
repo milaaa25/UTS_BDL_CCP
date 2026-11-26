@@ -1,0 +1,29 @@
+Snapshot CCP-wiki-raw: 200,385 pesan | offset per partisi:
+{0: '0..25237', 1: '0..23299', 2: '0..22123', 3: '0..23109', 4: '0..25988', 5: '0..23690', 6: '0..28358', 7: '0..28573'}
+Master menulis C:\Users\Public\uts_bigdata\CCP\snapshot\wiki_snapshot_dc7890.jsonl: {'baris': 200385, 'md5': '39a48ac2044cbedcc844f278f0b24c99', 'detik': 9.6, 'mb': 82.8}
+
+Percobaan 1 - Salinan identik di tiap Worker (path sama: C:\Users\Public\uts_bigdata\CCP\snapshot\wiki_snapshot_dc7890.jsonl):
+     pc    baris                              md5  detik   mb                                                                                                                                                                                                                                     galat  md5_sama
+ MASTER 200385.0 39a48ac2044cbedcc844f278f0b24c99    9.6 82.8                                                                                                                                                                                                                                       NaN      True
+Mila-w1 200385.0 39a48ac2044cbedcc844f278f0b24c99    9.3 82.8                                                                                                                                                                                                                                       NaN      True
+Mila-w2      NaN                              NaN    NaN  NaN FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:\\Users\\Public\\uts_bigdata\\CCP\\snapshot\\wiki_snapshot_dc7890.jsonl.tmp' -> 'C:\\Users\\Public\\uts_bigdata\\CCP\\snapshot\\wiki_snapshot_dc7890.jsonl'     False
+Mila-w3 200385.0 39a48ac2044cbedcc844f278f0b24c99    9.3 82.8                                                                                                                                                                                                                                       NaN      True
+Mila-w4 200385.0 39a48ac2044cbedcc844f278f0b24c99    9.3 82.8                                                                                                                                                                                                                                       NaN      True
+
+Percobaan 2 - Salinan identik di tiap Worker (path sama: C:\Users\Public\uts_bigdata\CCP\snapshot\wiki_snapshot_dc7890.jsonl):
+     pc    baris                              md5  detik   mb                                                                                                                                                                                                                                                                         galat  md5_sama
+ MASTER 200385.0 39a48ac2044cbedcc844f278f0b24c99    9.6 82.8                                                                                                                                                                                                                                                                           NaN      True
+Mila-w1      NaN                              NaN    NaN  NaN PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Public\\uts_bigdata\\CCP\\snapshot\\wiki_snapshot_dc7890.jsonl.tmp' -> 'C:\\Users\\Public\\uts_bigdata\\CCP\\snapshot\\wiki_snapshot_dc7890.jsonl'     False
+Mila-w2      NaN                              NaN    NaN  NaN PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Public\\uts_bigdata\\CCP\\snapshot\\wiki_snapshot_dc7890.jsonl.tmp' -> 'C:\\Users\\Public\\uts_bigdata\\CCP\\snapshot\\wiki_snapshot_dc7890.jsonl'     False
+Mila-w3      NaN                              NaN    NaN  NaN PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\Public\\uts_bigdata\\CCP\\snapshot\\wiki_snapshot_dc7890.jsonl.tmp' -> 'C:\\Users\\Public\\uts_bigdata\\CCP\\snapshot\\wiki_snapshot_dc7890.jsonl'     False
+Mila-w4 200385.0 39a48ac2044cbedcc844f278f0b24c99    8.4 82.8                                                                                                                                                                                                                                                                           NaN      True
+
+Percobaan 3 - Salinan identik di tiap Worker (path sama: C:\Users\Public\uts_bigdata\CCP\snapshot\wiki_snapshot_dc7890.jsonl):
+     pc  baris                              md5  detik   mb  galat  md5_sama
+ MASTER 200385 39a48ac2044cbedcc844f278f0b24c99    9.6 82.8    NaN      True
+Mila-w1 200385 39a48ac2044cbedcc844f278f0b24c99    8.5 82.8    NaN      True
+Mila-w2 200385 39a48ac2044cbedcc844f278f0b24c99    8.5 82.8    NaN      True
+Mila-w3 200385 39a48ac2044cbedcc844f278f0b24c99    8.5 82.8    NaN      True
+Mila-w4 200385 39a48ac2044cbedcc844f278f0b24c99    8.5 82.8    NaN      True
+
+Semua PC punya berkas identik.

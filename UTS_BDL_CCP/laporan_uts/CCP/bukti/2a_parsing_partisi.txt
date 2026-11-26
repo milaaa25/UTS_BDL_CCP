@@ -1,0 +1,11 @@
+Baris dibaca            : 200,388 (termasuk 3 baris uji rusak)
+Valid (dict)            : 200,385
+Gagal parse JSON        : 2   <- accumulator
+Field wajib kosong      : 1   <- accumulator
+Event unik (wiki+id)    : 200,385  -> duplikat dibuang 0
+
+Jumlah partisi RDD      : 17 (snapshot) -> parsed 17
+Elemen per partisi glom : [12288, 12288, 12288, 13312, 12288, 12288, 12288, 13312, 12288, 12288, 12288, 13312, 12288, 12288, 12288, 12993, 0]  (partisi terakhir = 3 baris uji rusak dari union, sehingga 0 elemen valid)
+min/maks/rata-rata      : 0 / 13,312 / 11,787
+
+Contoh 1 elemen hasil parsing: {'id': 93005039, 'type': 'edit', 'wiki': 'hewiki', 'server_name': 'he.wikipedia.org', 'title': 'תום מעיין', 'namespace': 0, 'user': 'Sapper-bot', 'anon': False, 'bot': True, 'minor': False, 'timestamp': 1795520045, 'length': {'old': 8327, 'new': 8341}, 'comment': 'תיקון תבנית:וואלה בעקבות שינוי במבנה הכתובת ([[מיוחד:הבדל/44260017|בקשה בוק:בב]])', 'meta_id': '0df4f102-0a83-477b-8781-38171af3c878'}

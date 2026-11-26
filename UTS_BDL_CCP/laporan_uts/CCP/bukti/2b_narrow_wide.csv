@@ -1,0 +1,10 @@
+operasi,jenis,keterangan
+textFile / parallelize,sumber,membuat RDD dari berkas/koleksi
+flatMap(urai),narrow,"setiap partisi diolah sendiri, tanpa pertukaran data antar-executor"
+filter,narrow,baris disaring di partisi asalnya
+map,narrow,transformasi 1 baris -> 1 baris di partisi yang sama
+flatMap(tokenisasi),narrow,"1 komentar -> banyak kata, tetap di partisi yang sama"
+reduceByKey,wide,kunci yang sama harus berkumpul di satu partisi -> shuffle (batas stage baru); ada map-side combine
+groupByKey (2c),wide,shuffle semua nilai tanpa penggabungan awal
+takeOrdered,action,top-N dihitung per partisi lalu digabung di driver (tanpa shuffle)
+count / collect / glom().collect(),action,memicu eksekusi job

@@ -1,0 +1,100 @@
+== Physical Plan ==
+AdaptiveSparkPlan (14)
++- Sort (13)
+   +- Exchange (12)
+      +- HashAggregate (11)
+         +- Exchange (10)
+            +- HashAggregate (9)
+               +- Project (8)
+                  +- Filter (7)
+                     +- InMemoryTableScan (1)
+                           +- InMemoryRelation (2)
+                                 +- * Project (6)
+                                    +- Project (5)
+                                       +- * Project (4)
+                                          +- * Scan KafkaRelation(strategy=Subscribe[CCP-wiki-raw], start=SpecificOffsetRangeLimit(HashMap(CCP-wiki-raw-2 -> 0, CCP-wiki-raw-4 -> 0, CCP-wiki-raw-0 -> 0, CCP-wiki-raw-1 -> 0, CCP-wiki-raw-5 -> 0, CCP-wiki-raw-6 -> 0, CCP-wiki-raw-7 -> 0, CCP-wiki-raw-3 -> 0)), end=SpecificOffsetRangeLimit(HashMap(CCP-wiki-raw-2 -> 22124, CCP-wiki-raw-4 -> 25989, CCP-wiki-raw-0 -> 25238, CCP-wiki-raw-1 -> 23300, CCP-wiki-raw-5 -> 23691, CCP-wiki-raw-6 -> 28359, CCP-wiki-raw-7 -> 28574, CCP-wiki-raw-3 -> 23110)))  (3)
+
+
+(1) InMemoryTableScan
+Output [6]: [_corrupt_record#16, bot#25, timestamp#27L, title#21, type#18, wiki#19]
+Arguments: [_corrupt_record#16, bot#25, timestamp#27L, title#21, type#18, wiki#19], [isnotnull(type#18), isnull(_corrupt_record#16), atleastnnonnulls(4, wiki#19, type#18, title#21, timestamp#27L), (type#18 = edit)]
+
+(2) InMemoryRelation
+Arguments: [id#17L, type#18, wiki#19, server_name#20, title#21, namespace#22, user#23, anon#24, bot#25, minor#26, timestamp#27L, length#28, comment#29, meta_id#30, _corrupt_record#16], StorageLevel(disk, memory, deserialized, 1 replicas)
+
+(3) Scan KafkaRelation(strategy=Subscribe[CCP-wiki-raw], start=SpecificOffsetRangeLimit(HashMap(CCP-wiki-raw-2 -> 0, CCP-wiki-raw-4 -> 0, CCP-wiki-raw-0 -> 0, CCP-wiki-raw-1 -> 0, CCP-wiki-raw-5 -> 0, CCP-wiki-raw-6 -> 0, CCP-wiki-raw-7 -> 0, CCP-wiki-raw-3 -> 0)), end=SpecificOffsetRangeLimit(HashMap(CCP-wiki-raw-2 -> 22124, CCP-wiki-raw-4 -> 25989, CCP-wiki-raw-0 -> 25238, CCP-wiki-raw-1 -> 23300, CCP-wiki-raw-5 -> 23691, CCP-wiki-raw-6 -> 28359, CCP-wiki-raw-7 -> 28574, CCP-wiki-raw-3 -> 23110)))  [codegen id : 1]
+Output [7]: [key#7, value#8, topic#9, partition#10, offset#11L, timestamp#12, timestampType#13]
+ReadSchema: struct<key:binary,value:binary,topic:string,partition:int,offset:bigint,timestamp:timestamp,timestampType:int>
+
+(4) Project [codegen id : 1]
+Output [1]: [cast(value#8 as string) AS _v#14]
+Input [7]: [key#7, value#8, topic#9, partition#10, offset#11L, timestamp#12, timestampType#13]
+
+(5) Project
+Output [2]: [from_json(StructField(id,LongType,true), StructField(type,StringType,true), StructField(wiki,StringType,true), StructField(server_name,StringType,true), StructField(title,StringType,true), StructField(namespace,IntegerType,true), StructField(user,StringType,true), StructField(anon,BooleanType,true), StructField(bot,BooleanType,true), StructField(minor,BooleanType,true), StructField(timestamp,LongType,true), StructField(length,StructType(StructField(old,LongType,true),StructField(new,LongType,true)),true), StructField(comment,StringType,true), StructField(meta_id,StringType,true), _v#14, Some(Asia/Jakarta), false) AS e#15, _v#14]
+Input [1]: [_v#14]
+
+(6) Project [codegen id : 2]
+Output [15]: [e#15.id AS id#17L, e#15.type AS type#18, e#15.wiki AS wiki#19, e#15.server_name AS server_name#20, e#15.title AS title#21, e#15.namespace AS namespace#22, e#15.user AS user#23, e#15.anon AS anon#24, e#15.bot AS bot#25, e#15.minor AS minor#26, e#15.timestamp AS timestamp#27L, e#15.length AS length#28, e#15.comment AS comment#29, e#15.meta_id AS meta_id#30, CASE WHEN isnull(e#15.wiki) THEN _v#14 END AS _corrupt_record#16]
+Input [2]: [e#15, _v#14]
+
+(7) Filter
+Input [6]: [_corrupt_record#16, bot#25, timestamp#27L, title#21, type#18, wiki#19]
+Condition : (((isnotnull(type#18) AND isnull(_corrupt_record#16)) AND atleastnnonnulls(4, wiki#19, type#18, title#21, timestamp#27L)) AND (type#18 = edit))
+
+(8) Project
+Output [2]: [wiki#19, coalesce(bot#25, false) AS bot#6949]
+Input [6]: [_corrupt_record#16, bot#25, timestamp#27L, title#21, type#18, wiki#19]
+
+(9) HashAggregate
+Input [2]: [wiki#19, bot#6949]
+Keys [1]: [wiki#19]
+Functions [3]: [partial_count(1), partial_sum(CASE WHEN bot#6949 THEN 1 ELSE 0 END), partial_sum(CASE WHEN NOT bot#6949 THEN 1 ELSE 0 END)]
+Aggregate Attributes [3]: [count#7191L, sum#7192L, sum#7193L]
+Results [4]: [wiki#19, count#7194L, sum#7195L, sum#7196L]
+
+(10) Exchange
+Input [4]: [wiki#19, count#7194L, sum#7195L, sum#7196L]
+Arguments: hashpartitioning(wiki#19, 8), ENSURE_REQUIREMENTS, [plan_id=2061]
+
+(11) HashAggregate
+Input [4]: [wiki#19, count#7194L, sum#7195L, sum#7196L]
+Keys [1]: [wiki#19]
+Functions [3]: [count(1), sum(CASE WHEN bot#6949 THEN 1 ELSE 0 END), sum(CASE WHEN NOT bot#6949 THEN 1 ELSE 0 END)]
+Aggregate Attributes [3]: [count(1)#6959L, sum(CASE WHEN bot#6949 THEN 1 ELSE 0 END)#6960L, sum(CASE WHEN NOT bot#6949 THEN 1 ELSE 0 END)#6961L]
+Results [6]: [wiki#19, count(1)#6959L AS total_edit#6954L, sum(CASE WHEN bot#6949 THEN 1 ELSE 0 END)#6960L AS edit_bot#6955L, sum(CASE WHEN NOT bot#6949 THEN 1 ELSE 0 END)#6961L AS edit_manusia#6956L, round(((100.0 * cast(sum(CASE WHEN bot#6949 THEN 1 ELSE 0 END)#6960L as decimal(20,0))) / cast(count(1)#6959L as decimal(20,0))), 2) AS persen_bot#6957, round(((100.0 * cast(sum(CASE WHEN NOT bot#6949 THEN 1 ELSE 0 END)#6961L as decimal(20,0))) / cast(count(1)#6959L as decimal(20,0))), 2) AS persen_manusia#6958]
+
+(12) Exchange
+Input [6]: [wiki#19, total_edit#6954L, edit_bot#6955L, edit_manusia#6956L, persen_bot#6957, persen_manusia#6958]
+Arguments: rangepartitioning(total_edit#6954L DESC NULLS LAST, 8), ENSURE_REQUIREMENTS, [plan_id=2064]
+
+(13) Sort
+Input [6]: [wiki#19, total_edit#6954L, edit_bot#6955L, edit_manusia#6956L, persen_bot#6957, persen_manusia#6958]
+Arguments: [total_edit#6954L DESC NULLS LAST], true, 0
+
+(14) AdaptiveSparkPlan
+Output [6]: [wiki#19, total_edit#6954L, edit_bot#6955L, edit_manusia#6956L, persen_bot#6957, persen_manusia#6958]
+Arguments: isFinalPlan=false
+
+
+
+Ringkasan operator (pohon plan, dibaca dari bawah ke atas):
+== Physical Plan ==
+AdaptiveSparkPlan (14)
++- Sort (13)
+   +- Exchange (12)
+      +- HashAggregate (11)
+         +- Exchange (10)
+            +- HashAggregate (9)
+               +- Project (8)
+                  +- Filter (7)
+                     +- InMemoryTableScan (1)
+                           +- InMemoryRelation (2)
+                                 +- * Project (6)
+                                    +- Project (5)
+                                       +- * Project (4)
+                                          +- * Scan KafkaRelation(strategy=Subscribe[CCP-wiki-raw], start=SpecificOffsetRangeLimit(HashMap(CCP-wiki-raw-2 -> 0, CCP-wiki-raw-4 -> 0, CCP-wiki-raw-0 -> 0, CCP-wiki-raw-1 -> 0, CCP-wiki-raw-5 -> 0, CCP-wiki-raw-6 -> 0, CCP-wiki-raw-7 -> 0, CCP-wiki-raw-3 -> 0)), end=SpecificOffsetRangeLimit(HashMap(CCP-wiki-raw-2 -> 22124, CCP-wiki-raw-4 -> 25989, CCP-wiki-raw-0 -> 25238, CCP-wiki-raw-1 -> 23300, CCP-wiki-raw-5 -> 23691, CCP-wiki-raw-6 -> 28359, CCP-wiki-raw-7 -> 28574, CCP-wiki-raw-3 -> 23110)))  (3)
+  (9) HashAggregate: Keys [1]: [wiki#19] | Functions [3]: [partial_count(1), partial_sum(CASE WHEN bot#6949 THEN 1 ELSE 0 END), partial_sum(CASE WHEN NOT bot#6949 THEN 1 ELSE 0 END)]
+  (10) Exchange: Arguments: hashpartitioning(wiki#19, 8), ENSURE_REQUIREMENTS, [plan_id=2061]
+  (11) HashAggregate: Keys [1]: [wiki#19] | Functions [3]: [count(1), sum(CASE WHEN bot#6949 THEN 1 ELSE 0 END), sum(CASE WHEN NOT bot#6949 THEN 1 ELSE 0 END)]
+  (12) Exchange: Arguments: rangepartitioning(total_edit#6954L DESC NULLS LAST, 8), ENSURE_REQUIREMENTS, [plan_id=2064]

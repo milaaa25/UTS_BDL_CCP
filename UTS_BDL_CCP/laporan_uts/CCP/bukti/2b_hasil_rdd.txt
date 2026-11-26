@@ -1,0 +1,43 @@
+(i) 10 wiki dengan edit manusia terbanyak (type=edit, bot=false):
+        wiki  edit_manusia
+wikidatawiki         37858
+      enwiki          9439
+ commonswiki          9060
+      trwiki          1649
+      frwiki          1216
+      dewiki          1138
+      ruwiki           817
+      jawiki           781
+      itwiki           697
+      ukwiki           606
+
+(ii) 10 halaman idwiki paling banyak disunting:
+                                    judul  jumlah_suntingan
+                            Avatar (film)                11
+                      D'Academy (musim 8)                 9
+                  Kereta api Kedung Sepur                 5
+                                Jean Grey                 3
+              Pengguna:Rachmat04/Tengu.js                 3
+                Pusat Zeni Angkatan Darat                 3
+                                Al-Qur'an                 2
+                             Brock Lesnar                 2
+              Daftar tokoh Sumatera Barat                 2
+Kategori:Film yang berlatar tahun 2020-an                 2
+
+(iii) 15 kata terbanyak di comment suntingan idwiki (stopword dibuang):
+        kata  frekuensi
+     altered         34
+        film         34
+       iabot         34
+     needing         34
+notification         34
+      review         34
+     sources         34
+    kategori         24
+      revisi         15
+     special         15
+        user         14
+      bicara         12
+     halaman         12
+     rachmat         12
+      tantya         12

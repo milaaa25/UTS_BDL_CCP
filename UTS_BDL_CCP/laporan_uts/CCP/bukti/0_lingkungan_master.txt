@@ -1,0 +1,12 @@
+host            : Mila
+os              : Windows-11-10.0.26300-SP0
+python          : 3.14.8
+executable      : C:\BigData\venv\Scripts\python.exe
+pyspark         : 4.1.3
+confluent_kafka : 2
+librdkafka      : 2.16.0
+pandas          : 3.0.6
+java            : openjdk version "21.0.12.1" 2026-08-18 LTS
+psutil          : True
+
+Kafka broker 192.168.18.154:9092 terjangkau: True

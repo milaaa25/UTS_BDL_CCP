@@ -1,0 +1,3 @@
+trigger,batch,input_per_batch,inputRowsPerSecond,processedRowsPerSecond,durasi_batch_ms,perkiraan_latensi_dtk
+10 seconds,13,313.0,30.1,32.5,10129.4,15.1
+30 seconds,7,1000.1,34.5,113.4,9225.0,24.2

@@ -1,0 +1,33 @@
+Sumber: kafka | Baris valid: 200,385 | rusak: 0 | unik setelah dropDuplicates(kunci_dedup): 200,385 (RDD 2a: 200,385 -> KONSISTEN)
+root
+ |-- id: long (nullable = true)
+ |-- type: string (nullable = true)
+ |-- wiki: string (nullable = true)
+ |-- server_name: string (nullable = true)
+ |-- title: string (nullable = true)
+ |-- namespace: integer (nullable = true)
+ |-- user: string (nullable = true)
+ |-- anon: boolean (nullable = true)
+ |-- bot: boolean (nullable = false)
+ |-- minor: boolean (nullable = true)
+ |-- timestamp: long (nullable = true)
+ |-- length: struct (nullable = true)
+ |    |-- old: long (nullable = true)
+ |    |-- new: long (nullable = true)
+ |-- comment: string (nullable = true)
+ |-- meta_id: string (nullable = true)
+ |-- waktu: timestamp (nullable = true)
+ |-- selisih_byte: long (nullable = true)
+ |-- kunci_dedup: string (nullable = false)
+
++------+----------+--------------------------+-----------------+-----+----------+-------------------+--------------+------------+
+|  wiki|      type|                     title|             user|  bot| timestamp|              waktu|        length|selisih_byte|
++------+----------+--------------------------+-----------------+-----+----------+-------------------+--------------+------------+
+|afwiki|      edit|         Nottingham Forest|anon-539bcd713d5d|false|1795521051|2026-11-24 18:50:51|  {3160, 3157}|          -3|
+|afwiki|      edit|         Manchester United|anon-539bcd713d5d|false|1795521125|2026-11-24 18:52:05|{19602, 19628}|          26|
+|afwiki|      edit|       Mauricio Pochettino|anon-539bcd713d5d|false|1795521329|2026-11-24 18:55:29|  {5868, 5896}|          28|
+|afwiki|       new|      Anorthodes triquetra|      KabouterBot| true|1795522110|2026-11-24 19:08:30|  {NULL, 1053}|        1053|
+|afwiki|categorize|Kategorie:Biologiesaadjies|      KabouterBot| true|1795522110|2026-11-24 19:08:30|  {NULL, NULL}|        NULL|
++------+----------+--------------------------+-----------------+-----+----------+-------------------+--------------+------------+
+only showing top 5 rows
+Temporary view 'suntingan' terdaftar: ['suntingan']

@@ -1,0 +1,17 @@
+Sampel 25,202 pesan terbaru dari 8 partisi. Cek murmur2: 25,202/25,202 (100.00%) sama dengan partisi asli.
+
+Porsi 8 wiki teratas:
+  commonswiki        6,170  ( 24.5%)
+  wikidatawiki       3,860  ( 15.3%)
+  hewiki             3,794  ( 15.1%)
+  enwiki             3,143  ( 12.5%)
+  arwiki               801  (  3.2%)
+  mgwiktionary         680  (  2.7%)
+  ruwiktionary         603  (  2.4%)
+  enwiktionary         513  (  2.0%)
+
+Keseimbangan beban partisi (ideal: maks/rata-rata = 1, koef_variasi = 0):
+                                  maks/rata-rata  min/rata-rata  koef_variasi  partisi_terberat_%
+key = wiki (simulasi)                       5.02           0.07         1.577                62.7
+key = wiki|title (simulasi)                 1.31           0.84         0.169                16.4
+key = wiki|title (asli di topic)            1.31           0.84         0.169                16.4

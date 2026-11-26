@@ -1,0 +1,481 @@
+{
+  "kelompok": "CCP",
+  "run_id": "dc7890",
+  "mulai": "2026-11-24 18:31:42",
+  "worker_kafka": 4,
+  "worker_spark": 5,
+  "spark": {
+    "versi": "4.1.3",
+    "executor": 4,
+    "konektor_kafka": true
+  },
+  "1b": {
+    "pesan": 25202,
+    "laju_offset": 39.33,
+    "menit_producer": 11.0,
+    "reconnect": 0,
+    "dibuang": 0
+  },
+  "1a_skew": {
+    "maks/rata-rata": {
+      "key = wiki (simulasi)": 5.02,
+      "key = wiki|title (simulasi)": 1.31,
+      "key = wiki|title (asli di topic)": 1.31
+    },
+    "min/rata-rata": {
+      "key = wiki (simulasi)": 0.07,
+      "key = wiki|title (simulasi)": 0.84,
+      "key = wiki|title (asli di topic)": 0.84
+    },
+    "koef_variasi": {
+      "key = wiki (simulasi)": 1.577,
+      "key = wiki|title (simulasi)": 0.169,
+      "key = wiki|title (asli di topic)": 0.169
+    },
+    "partisi_terberat_%": {
+      "key = wiki (simulasi)": 62.7,
+      "key = wiki|title (simulasi)": 16.4,
+      "key = wiki|title (asli di topic)": 16.4
+    }
+  },
+  "1c": {
+    "group": "CCP-wiki-pemroses-dc7890",
+    "hilang": 0,
+    "ganda": 0,
+    "diproses": 34456,
+    "unik": 34456,
+    "menumpuk_saat_berhenti": 5188
+  },
+  "1c_crash": {
+    "ganda": 461,
+    "hilang": 0
+  },
+  "snapshot": {
+    "pesan": 200385,
+    "sumber": "jsonl",
+    "path": "C:\\Users\\Public\\uts_bigdata\\CCP\\snapshot\\wiki_snapshot_dc7890.jsonl"
+  },
+  "2a": {
+    "valid": 200385,
+    "rusak": 2,
+    "tidak_lengkap": 1,
+    "unik": 200385,
+    "partisi": 17,
+    "glom": [
+      12288,
+      12288,
+      12288,
+      13312,
+      12288,
+      12288,
+      12288,
+      13312,
+      12288,
+      12288,
+      12288,
+      13312,
+      12288,
+      12288,
+      12288,
+      12993,
+      0
+    ]
+  },
+  "2b": {
+    "top_wiki": [
+      [
+        "wikidatawiki",
+        37858
+      ],
+      [
+        "enwiki",
+        9439
+      ],
+      [
+        "commonswiki",
+        9060
+      ],
+      [
+        "trwiki",
+        1649
+      ],
+      [
+        "frwiki",
+        1216
+      ],
+      [
+        "dewiki",
+        1138
+      ],
+      [
+        "ruwiki",
+        817
+      ],
+      [
+        "jawiki",
+        781
+      ],
+      [
+        "itwiki",
+        697
+      ],
+      [
+        "ukwiki",
+        606
+      ]
+    ],
+    "top_halaman_idwiki": [
+      [
+        "Avatar (film)",
+        11
+      ],
+      [
+        "D'Academy (musim 8)",
+        9
+      ],
+      [
+        "Kereta api Kedung Sepur",
+        5
+      ],
+      [
+        "Jean Grey",
+        3
+      ],
+      [
+        "Pengguna:Rachmat04/Tengu.js",
+        3
+      ],
+      [
+        "Pusat Zeni Angkatan Darat",
+        3
+      ],
+      [
+        "Al-Qur'an",
+        2
+      ],
+      [
+        "Brock Lesnar",
+        2
+      ],
+      [
+        "Daftar tokoh Sumatera Barat",
+        2
+      ],
+      [
+        "Kategori:Film yang berlatar tahun 2020-an",
+        2
+      ]
+    ],
+    "top_kata_idwiki": [
+      [
+        "altered",
+        34
+      ],
+      [
+        "film",
+        34
+      ],
+      [
+        "iabot",
+        34
+      ],
+      [
+        "needing",
+        34
+      ],
+      [
+        "notification",
+        34
+      ],
+      [
+        "review",
+        34
+      ],
+      [
+        "sources",
+        34
+      ],
+      [
+        "kategori",
+        24
+      ],
+      [
+        "revisi",
+        15
+      ],
+      [
+        "special",
+        15
+      ],
+      [
+        "user",
+        14
+      ],
+      [
+        "bicara",
+        12
+      ],
+      [
+        "halaman",
+        12
+      ],
+      [
+        "rachmat",
+        12
+      ],
+      [
+        "tantya",
+        12
+      ]
+    ]
+  },
+  "2c": [
+    {
+      "data": "data asli",
+      "metode": "reduceByKey",
+      "waktu_terbaik_dtk": 21.236,
+      "nilai_dikirim_lewat_shuffle": 1870,
+      "shuffle_write_kb": 40.4,
+      "shuffle_read_kb": 40.4,
+      "record_shuffle_spark_ui": 288,
+      "stage": 3,
+      "task": 51
+    },
+    {
+      "data": "data asli",
+      "metode": "groupByKey().mapValues(sum)",
+      "waktu_terbaik_dtk": 21.957,
+      "nilai_dikirim_lewat_shuffle": 71512,
+      "shuffle_write_kb": 44.4,
+      "shuffle_read_kb": 44.4,
+      "record_shuffle_spark_ui": 288,
+      "stage": 3,
+      "task": 51
+    },
+    {
+      "data": "diperbanyak 20x",
+      "metode": "reduceByKey",
+      "waktu_terbaik_dtk": 21.32,
+      "nilai_dikirim_lewat_shuffle": 1870,
+      "shuffle_write_kb": 40.9,
+      "shuffle_read_kb": 40.9,
+      "record_shuffle_spark_ui": 288,
+      "stage": 3,
+      "task": 51
+    },
+    {
+      "data": "diperbanyak 20x",
+      "metode": "groupByKey().mapValues(sum)",
+      "waktu_terbaik_dtk": 21.041,
+      "nilai_dikirim_lewat_shuffle": 1430240,
+      "shuffle_write_kb": 57.6,
+      "shuffle_read_kb": 57.6,
+      "record_shuffle_spark_ui": 288,
+      "stage": 3,
+      "task": 51
+    }
+  ],
+  "2d": {
+    "job_stage_task": [
+      {
+        "action": "raw.count()",
+        "job": 1,
+        "stage": 1,
+        "stage_dilewati": 0,
+        "task": 17,
+        "task_dilewati": 0,
+        "detik": 19.57
+      },
+      {
+        "action": "parsed.count() [cache]",
+        "job": 1,
+        "stage": 1,
+        "stage_dilewati": 0,
+        "task": 17,
+        "task_dilewati": 0,
+        "detik": 10.79
+      },
+      {
+        "action": "unik.count() [cache]",
+        "job": 1,
+        "stage": 2,
+        "stage_dilewati": 1,
+        "task": 34,
+        "task_dilewati": 17,
+        "detik": 8.95
+      },
+      {
+        "action": "(i) takeOrdered",
+        "job": 1,
+        "stage": 3,
+        "stage_dilewati": 1,
+        "task": 51,
+        "task_dilewati": 17,
+        "detik": 21.39
+      },
+      {
+        "action": "(ii) takeOrdered",
+        "job": 1,
+        "stage": 3,
+        "stage_dilewati": 1,
+        "task": 51,
+        "task_dilewati": 17,
+        "detik": 18.04
+      },
+      {
+        "action": "(iii) takeOrdered",
+        "job": 1,
+        "stage": 3,
+        "stage_dilewati": 1,
+        "task": 51,
+        "task_dilewati": 17,
+        "detik": 18.22
+      },
+      {
+        "action": "parsed.glom().map(len).collect()",
+        "job": 1,
+        "stage": 1,
+        "stage_dilewati": 0,
+        "task": 17,
+        "task_dilewati": 0,
+        "detik": 10.57
+      }
+    ],
+    "cache": [
+      {
+        "skenario": "tanpa cache (3 action)",
+        "detik": 81.782
+      },
+      {
+        "skenario": "dengan cache (3 action, termasuk mengisi cache)",
+        "detik": 80.095
+      },
+      {
+        "skenario": "dengan cache, diulang (cache sudah terisi)",
+        "detik": 63.662
+      }
+    ]
+  },
+  "3a": {
+    "baris_unik": 200385,
+    "rusak": 0,
+    "konsisten_dengan_rdd": true,
+    "sumber": "kafka"
+  },
+  "3b": {
+    "konsisten_rdd_sql": true,
+    "persen_bot_top5": [
+      {
+        "wiki": "wikidatawiki",
+        "total_edit": 38269,
+        "edit_bot": 411,
+        "edit_manusia": 37858,
+        "persen_bot": "1.07",
+        "persen_manusia": "98.93"
+      },
+      {
+        "wiki": "commonswiki",
+        "total_edit": 16043,
+        "edit_bot": 6983,
+        "edit_manusia": 9060,
+        "persen_bot": "43.53",
+        "persen_manusia": "56.47"
+      },
+      {
+        "wiki": "enwiki",
+        "total_edit": 11403,
+        "edit_bot": 1964,
+        "edit_manusia": 9439,
+        "persen_bot": "17.22",
+        "persen_manusia": "82.78"
+      },
+      {
+        "wiki": "ruwiktionary",
+        "total_edit": 4526,
+        "edit_bot": 4492,
+        "edit_manusia": 34,
+        "persen_bot": "99.25",
+        "persen_manusia": "0.75"
+      },
+      {
+        "wiki": "hewiki",
+        "total_edit": 3442,
+        "edit_bot": 3146,
+        "edit_manusia": 296,
+        "persen_bot": "91.40",
+        "persen_manusia": "8.60"
+      }
+    ]
+  },
+  "3c": {
+    "p99": 4,
+    "k": 4,
+    "jumlah_lonjakan": 25
+  },
+  "3d": [
+    {
+      "optimasi": "shuffle.partitions = 200",
+      "waktu_terbaik_dtk": 2.883,
+      "task_per_3_eksekusi": 1542,
+      "shuffle_read_kb_per_3": 552.6
+    },
+    {
+      "optimasi": "shuffle.partitions = 8",
+      "waktu_terbaik_dtk": 0.56,
+      "task_per_3_eksekusi": 168,
+      "shuffle_read_kb_per_3": 216.9
+    },
+    {
+      "optimasi": "join tanpa broadcast (SortMergeJoin)",
+      "waktu_terbaik_dtk": 9.21,
+      "task_per_3_eksekusi": 120,
+      "shuffle_read_kb_per_3": 395.4
+    },
+    {
+      "optimasi": "join broadcast (BroadcastHashJoin)",
+      "waktu_terbaik_dtk": 9.22,
+      "task_per_3_eksekusi": 96,
+      "shuffle_read_kb_per_3": 27.9
+    }
+  ],
+  "4b": [
+    {
+      "trigger": "10 seconds",
+      "batch": 13,
+      "input_per_batch": 313.0,
+      "inputRowsPerSecond": 30.1,
+      "processedRowsPerSecond": 32.5,
+      "durasi_batch_ms": 10129.4,
+      "perkiraan_latensi_dtk": 15.1
+    },
+    {
+      "trigger": "30 seconds",
+      "batch": 7,
+      "input_per_batch": 1000.1,
+      "inputRowsPerSecond": 34.5,
+      "processedRowsPerSecond": 113.4,
+      "durasi_batch_ms": 9225.0,
+      "perkiraan_latensi_dtk": 24.2
+    }
+  ],
+  "4c": {
+    "offset_lanjut_tepat": null,
+    "jendela_final": 251,
+    "jendela_beda": 0
+  },
+  "4c_terlambat": {
+    "dibuang": 1,
+    "baris_uji": 1
+  },
+  "producer_akhir": {
+    "berjalan": false,
+    "menit": 123.92,
+    "koneksi": 10,
+    "diproduksi": 288072,
+    "terkirim": 288072,
+    "reconnect": 11,
+    "dibuang": 4,
+    "laju_rata": 38.74
+  },
+  "selesai": "2026-11-24 20:38:00"
+}

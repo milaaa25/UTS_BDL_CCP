@@ -1,0 +1,5 @@
+data,metode,waktu_terbaik_dtk,nilai_dikirim_lewat_shuffle,shuffle_write_kb,shuffle_read_kb,record_shuffle_spark_ui,stage,task,semua_percobaan
+data asli,reduceByKey,21.236,1870,40.4,40.4,288,3,51,"[22.287, 21.236, 22.336]"
+data asli,groupByKey().mapValues(sum),21.957,71512,44.4,44.4,288,3,51,"[22.282, 21.957, 22.224]"
+diperbanyak 20x,reduceByKey,21.32,1870,40.9,40.9,288,3,51,"[22.495, 22.269, 21.32]"
+diperbanyak 20x,groupByKey().mapValues(sum),21.041,1430240,57.6,57.6,288,3,51,"[22.215, 21.977, 21.041]"

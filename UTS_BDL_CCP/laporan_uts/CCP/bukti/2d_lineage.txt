@@ -1,0 +1,20 @@
+Lineage (toDebugString) RDD (i). Tanda '+-' = batas shuffle/stage baru:
+
+(17) PythonRDD[135] at RDD at PythonRDD.scala:59 []
+ |   MapPartitionsRDD[134] at mapPartitions at PythonRDD.scala:171 []
+ |   ShuffledRDD[133] at partitionBy at <unknown>:0 []
+ +-(17) PairwiseRDD[132] at reduceByKey at C:\Users\ahmad\AppData\Local\Temp\ipykernel_10940\648362642.py:15 []
+    |   PythonRDD[131] at reduceByKey at C:\Users\ahmad\AppData\Local\Temp\ipykernel_10940\648362642.py:15 []
+    |   PythonRDD[14] at RDD at PythonRDD.scala:59 []
+    |       CachedPartitions: 17; MemorySize: 27.9 MiB; DiskSize: 0.0 B
+    |   MapPartitionsRDD[13] at mapPartitions at PythonRDD.scala:171 []
+    |   ShuffledRDD[12] at partitionBy at NativeMethodAccessorImpl.java:0 []
+    +-(17) PairwiseRDD[11] at reduceByKey at C:\Users\ahmad\AppData\Local\Temp\ipykernel_10940\2142928601.py:55 []
+       |   PythonRDD[10] at reduceByKey at C:\Users\ahmad\AppData\Local\Temp\ipykernel_10940\2142928601.py:55 []
+       |   PythonRDD[7] at RDD at PythonRDD.scala:59 []
+       |       CachedPartitions: 17; MemorySize: 25.9 MiB; DiskSize: 0.0 B
+       |   UnionRDD[6] at union at NativeMethodAccessorImpl.java:0 []
+       |   PythonRDD[4] at RDD at PythonRDD.scala:59 []
+       |   ParallelCollectionRDD[2] at readRDDFromFile at PythonRDD.scala:300 []
+       |   PythonRDD[5] at RDD at PythonRDD.scala:59 []
+       |   ParallelCollectionRDD[3] at readRDDFromFile at PythonRDD.scala:300 []

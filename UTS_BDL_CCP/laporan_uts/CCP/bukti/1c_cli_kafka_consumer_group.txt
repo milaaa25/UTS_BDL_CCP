@@ -1,0 +1,12 @@
+
+$ <KAFKA_HOME>\bin\windows\kafka-topics.bat --bootstrap-server 192.168.18.154:9092 --describe --topic CCP-wiki-raw
+
+$ <KAFKA_HOME>\bin\windows\kafka-get-offsets.bat --bootstrap-server 192.168.18.154:9092 --topic CCP-wiki-raw
+
+$ <KAFKA_HOME>\bin\windows\kafka-run-class.bat kafka.tools.GetOffsetShell --bootstrap-server 192.168.18.154:9092 --topic CCP-wiki-raw --time -1
+
+$ <KAFKA_HOME>\bin\windows\kafka-console-consumer.bat --bootstrap-server 192.168.18.154:9092 --topic CCP-wiki-raw --from-beginning --max-messages 3 --property print.key=true --property print.partition=true --property print.offset=true
+
+$ <KAFKA_HOME>\bin\windows\kafka-consumer-groups.bat --bootstrap-server 192.168.18.154:9092 --describe --group CCP-wiki-pemroses-dc7890
+
+KAFKA_HOME belum diisi: jalankan perintah di atas di terminal PC Master lalu ambil tangkapan layar.

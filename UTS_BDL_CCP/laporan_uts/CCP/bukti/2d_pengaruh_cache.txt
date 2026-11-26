@@ -1,0 +1,10 @@
+                                       skenario  detik  job  stage  task  baris_rusak_terhitung_accumulator
+                         tanpa cache (3 action) 81.782    3      5    85                                  6
+dengan cache (3 action, termasuk mengisi cache) 80.095    3      5    85                                  2
+     dengan cache, diulang (cache sudah terisi) 63.662    3      5    85                                  2
+
+Percepatan setelah cache terisi: 1.3x
+RDD ter-cache id=7 (PythonRDD) | partisi 17/17 | memori 27.2 MB | level Memory Serialized 1x Replicated
+RDD ter-cache id=14 (PythonRDD) | partisi 17/17 | memori 29.3 MB | level Memory Serialized 1x Replicated
+RDD ter-cache id=162 (PythonRDD) | partisi 17/17 | memori 27.2 MB | level Memory Serialized 1x Replicated
+Catatan: accumulator di dalam transformasi ikut bertambah setiap kali RDD dihitung ulang (tanpa cache, nilainya 3x lipat); hitungan yang tepat dibaca setelah satu action pada RDD yang di-cache.

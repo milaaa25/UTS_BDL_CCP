@@ -1,0 +1,4 @@
+skenario,detik,baris_rusak_terhitung_accumulator,job,stage,stage_dilewati,task,task_dilewati,shuffle_write_kb,shuffle_write_record,shuffle_read_kb,shuffle_read_record
+tanpa cache (3 action),81.782,6,3,5,0,85,0,47.8,378,47.8,378
+"dengan cache (3 action, termasuk mengisi cache)",80.095,2,3,5,0,85,0,47.8,378,47.8,378
+"dengan cache, diulang (cache sudah terisi)",63.662,2,3,5,0,85,0,47.8,378,47.8,378

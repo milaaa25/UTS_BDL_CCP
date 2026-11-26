@@ -1,0 +1,8 @@
+Watermark saat uji: 2026-11-24T13:30:29.000Z
+Event A (10 menit lalu, 20:22:17) dan event B (45 detik lalu, 20:31:32) dikirim ke CCP-wiki-raw.
+Baris hasil streaming untuk wiki uji:
+      jendela_mulai       jendela_akhir         wiki  jumlah_edit  jumlah_bot  rasio_bot  batch_id
+2026-11-24 20:31:00 2026-11-24 20:32:00 ujiterlambat            1           0        0.0         4
+numRowsDroppedByWatermark bertambah: 1
+Penjelasan: watermark = event time maksimum yang sudah terlihat dikurangi 2 menit. Baris dengan event time lebih tua dari watermark dianggap terlambat: dibuang dan jendelanya tidak diubah lagi (state jendela lama sudah dihapus). Baris yang masih di dalam batas watermark tetap memperbarui jendelanya; mode update mengeluarkan versi terbaru jendela itu.
+Peran: OFFSET = posisi baca di Kafka per partisi; CHECKPOINT = log offset tiap batch + commit + state store, sehingga restart melanjutkan tepat dari batch terakhir dan batch yang belum di-commit diulang dengan offset yang sama (foreachBatch ditulis per batch_id sehingga pengulangan tidak menggandakan hasil); WATERMARK = batas toleransi keterlambatan sekaligus penentu kapan state jendela boleh dibuang.

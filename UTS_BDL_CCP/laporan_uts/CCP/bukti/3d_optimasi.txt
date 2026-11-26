@@ -1,0 +1,12 @@
+(AQE dimatikan selama percobaan agar pengaruh tiap pengaturan terlihat)
+                            optimasi  waktu_terbaik_dtk  task_per_3_eksekusi  shuffle_read_kb_per_3
+            shuffle.partitions = 200              2.883                 1542                  552.6
+              shuffle.partitions = 8              0.560                  168                  216.9
+join tanpa broadcast (SortMergeJoin)              9.210                  120                  395.4
+  join broadcast (BroadcastHashJoin)              9.220                   96                   27.9
+
+shuffle.partitions: 200 -> 8 mengubah waktu 2.883 -> 0.56 dtk (5.1x) dan task 1542 -> 168: 200 task kecil untuk hasil agregasi yang hanya ratusan baris adalah overhead penjadwalan.
+Broadcast join: shuffle read 395.4 -> 27.9 KB, waktu 9.21 -> 9.22 dtk. Tabel referensi kecil dikirim ke tiap executor sehingga tabel besar tidak di-shuffle; bila waktunya setara, itu karena tabel 'besar' di snapshot ini pun masih kecil. Manfaatnya membesar saat data berukuran GB.
+
+Potongan plan join tanpa broadcast: ['+- * SortMergeJoin Inner (35)', '(35) SortMergeJoin [codegen id : 5]']
+Potongan plan join broadcast     : ['+- * BroadcastHashJoin Inner BuildRight (32)', '+- BroadcastExchange (31)', '(31) BroadcastExchange']
